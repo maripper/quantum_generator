@@ -17,25 +17,64 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-    
+    <style>
+        .container {
+        font-family: arial;
+        font-size: 24px;
+        margin: 25px;
+        width: 10500px;
+        height: 200px;
+        /* outline: dashed 1px black; */
+        }
+
+        .child {
+        width: 50px;
+        height: 50px;
+        /* background-color: red; */
+        /* Center horizontally*/
+        margin: 0 auto;
+        }
+        .modal {
+            display:    none;
+            position:   fixed;
+            z-index:    1000;
+            top:        0;
+            left:       0;
+            height:     100%;
+            width:      100%;
+            background: rgba(20, 16, 16, 0.8) 
+                        url('http://i.stack.imgur.com/FhHRx.gif') 
+                        50% 50% 
+                        no-repeat;
+        }
+
+    </style>
+
 </head>
 
 <body>
-    <div>
-        <button class="btn btn-outline-success my-2 my-sm-0" id="button0" onclick="startstop()">Start Container</button>
+    <div class = 'container'>
+        <div class = 'child'>
+            <button class="btn btn-outline-success my-2 my-sm-0" id="button0" onclick="startstop()">Start Container</button>
+        </div>
+        <div class = 'child'>
+            <div id = 'Loading' class="modal">
+            </div>
+        </div>
+        <div class = 'child' id = 'content'>
+
+        </div>
     </div>
-    <div id = 'Loading' class="spinner-border" role="status">
-        <span class="sr-only">Loading...</span>
-    </div>  
 
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#Loading").hide()
+            // $("#Loading").hide()
         });
         $(document).ajaxStart(function () {
+            // alert('Start')
             $('#Loading').show();
         });
-        $(document).ajaxComplete(function () {
+        $(document).ajaxStop(function () {
             $('#Loading').hide();
         });
         function startstop(){
@@ -46,7 +85,13 @@
                 url: "/simulator/start/",
                 data: { status: 'Start' },
                 success:function(response) {
-                    alert( "Data Saved: " + response );
+                    
+                    resp = '';
+                    Object.keys(response).forEach(key =>{
+                       resp = resp + `\n${key}: ${response[key]}`;
+                    });
+                    $('#content').text(resp);
+                    alert( "Data: " + resp );
                 }
                 });
             }
