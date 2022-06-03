@@ -18,5 +18,5 @@ from django.urls import path
 import base.views as views
 urlpatterns = [
     path('quantum_computer/', views.quantum_computer,name='quantum_computer'),
-    path('start/', views.quantum_management,name='start')
+    path('start/', views.start,name='start')
 ]
