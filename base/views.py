@@ -50,7 +50,7 @@ def start(request):
 
  
 
-    return JsonResponse({'status':response['status'],'sender_key':response['sender_key'],'sender_sample':response['sender_sample'],'receiver_key':response['receiver_key'],'receiver_sample':response['receiver_sample'],'receiver_results':response['receiver_results'],'sender_bits':response['sender_bits'],'sender_base':response['sender_base'],'n':response['n']})
+    return JsonResponse({'sender_and_receiver_comparing_sample_equivalent':response['status'],'sender_key':response['sender_key'],'receiver_key':response['receiver_key'],'receiver_results':response['receiver_results'],'sender_bits':response['sender_bits'],'sender_base':response['sender_base'],'tests_size':response['n']})
 
  
 
