@@ -45,14 +45,9 @@
         }
         
         .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-            background: rgba(20, 16, 16, 0.8) url('http://i.stack.imgur.com/FhHRx.gif') 50% 50% no-repeat;
+            /* display: block; */
+            width: 150px;
+            word-wrap: break-word;
         }
     </style>
 
@@ -87,7 +82,7 @@
         </div>
 
         <div class='child' style="width:50%;">
-            <div id='content'>
+            <div id='content' style="display: block;width: 850px;word-wrap: break-word;">
 
             </div>
 
@@ -146,11 +141,15 @@
 
                     Object.keys(response).forEach(key => {
 
+                        $('#content').append(`<p>${key}: ${response[key]}</p>`);
+
+                    });
+                    Object.keys(response).forEach(key => {
+
                         resp = resp + `\n${key}: ${response[key]}`;
 
                     });
-
-                    $('#content').text(resp);
+                    // $('#content').text(resp);
 
                     alert("Data: " + resp);
 
@@ -191,8 +190,12 @@
                         resp = resp + `\n${key}: ${response[key]}`;
 
                     });
+                    Object.keys(response).forEach(key => {
 
-                    $('#content').text(resp);
+                        $('#content').append(`<p>${key}: ${response[key]}</p>`);
+
+                    });
+                    // $('#content').text(resp);
 
                     alert("Data: " + resp);
 
