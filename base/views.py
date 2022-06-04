@@ -38,7 +38,8 @@ def start(request):
 
     # response= req.post('https://qubit-operators.herokuapp.com/qubit_operators/safe_poc/',data={'size':n})
 
-    response= req.post('https://qubit-operators.herokuapp.com/qubit_operators/safe_poc/',data={'size':n}).json()['context']
+    # response= req.post('https://qubit-operators.herokuapp.com/qubit_operators/safe_poc/',data={'size':n}).json()['context']
+    response= req.post('http://127.0.0.1:8000/qubit_operators/safe_poc/',data={'size':n}).json()['context']
 
     # response = response.replace("'", '"')
 
@@ -50,9 +51,35 @@ def start(request):
 
  
 
-    return JsonResponse({'sender_and_receiver_comparing_sample_equivalent':response['status'],'sender_key':response['sender_key'],'receiver_key':response['receiver_key'],'receiver_results':response['receiver_results'],'sender_bits':response['sender_bits'],'sender_base':response['sender_base'],'tests_size':response['n']})
+    return JsonResponse({'sender_and_receiver_comparing_sample_equivalent':response['status'],'message':response['sender_data'],'sender_key':response['sender_key'],'receiver_key':response['receiver_key'],'receiver_base':response['receiver_base'],'sender_base':response['sender_base'],'receiver_results':response['receiver_data'],'sender_results':response['sender_data'],'tests_size':response['n']})
+
+@csrf_exempt  
+
+def start_eve(request):
+
+    n = request.POST
+
+    n = 100
+
+    # response= req.post('https://qubit-operators.herokuapp.com/qubit_operators/receiver/',data={'size':n})
+
+    # response= req.post('https://qubit-operators.herokuapp.com/qubit_operators/safe_poc/',data={'size':n})
+
+    # response= req.post('https://qubit-operators.herokuapp.com/qubit_operators/safe_poc/',data={'size':n}).json()['context']
+    response= req.post('http://127.0.0.1:8000/qubit_operators/eve_poc/',data={'size':n}).json()['context']
+
+    # response = response.replace("'", '"')
+
+    response = json.loads(response)
+
+    # response = ast.literal_eval(response)
+
+    print('RESPONSE: -------------------------------------\n',response)
 
  
+
+    return JsonResponse({'sender_and_receiver_comparing_sample_equivalent':response['status'],'sender_key':response['sender_key'],'receiver_key':response['receiver_key'],'receiver_base':response['receiver_base'],'sender_base':response['sender_base'],'tests_size':response['n'],'message':response['sender_bits'],'receiver_results':response['receiver_data'],'sender_results':response['sender_data'],'intercepted_message':response['intercepted_message']})
+
 
 # @csrf_exempt
 
