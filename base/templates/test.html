@@ -12,7 +12,7 @@
 
     <link rel="stylesheet" href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css>
 
-    <title>Start/Stop Container</title>
+    <title>Tests</title>
 
     <script src=https://code.jquery.com/jquery-3.3.1.slim.min.js integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 
@@ -63,20 +63,15 @@
 
 
 <body>
-
     <div class='container'>
+        <p class="h4 font-weight-bold" style="margin-bottom:30px;margin-left:150px;text-align:center;color:rgb(122, 120, 120);">Encrypt/Decrypt message with last key generated</p>
 
         <div class='child'>
 
-            <button class="btn btn-outline-success my-2 my-sm-0" id="button0" onclick="startstop()">Start Without Eavesdropper</button>
+            <button class="btn btn-outline-success my-2 my-sm-0" id="button0" onclick="startstop()">Encrypt/Decrypt message</button>
 
         </div>
 
-        <div class='child'>
-
-            <button class="btn btn-outline-success my-2 my-sm-0" id="button1" onclick="eve()">Start with Eavesdropper</button>
-
-        </div>
 
         <div class='child'>
 
@@ -127,13 +122,14 @@
             console.log($("#button0").html)
             $("#content").html("");
 
+
             $.ajax({
 
                 type: "POST",
 
                 crossDomain: true,
 
-                url: "/simulator/start/",
+                url: "/simulator/test/",
 
                 data: {
                     status: 'Start'
@@ -153,53 +149,6 @@
                     Object.keys(response).forEach(key => {
 
                         resp = resp + `\n${key}: ${response[key]}`;
-
-                    });
-                    // $('#content').text(resp);
-
-                    alert("Data: " + resp);
-
-                }
-
-
-
-            });
-
-        }
-
-        function eve() {
-
-
-
-            console.log($("#button1").html)
-            $("#content").html("");
-
-            $.ajax({
-
-                type: "POST",
-
-                crossDomain: true,
-
-                url: "/simulator/start_eve/",
-
-                data: {
-                    status: 'Start'
-                },
-
-                success: function(response) {
-
-
-
-                    resp = '';
-
-                    Object.keys(response).forEach(key => {
-
-                        resp = resp + `\n${key}: ${response[key]}`;
-
-                    });
-                    Object.keys(response).forEach(key => {
-
-                        $('#content').append(`<p>${key}: ${response[key]}</p>`);
 
                     });
                     // $('#content').text(resp);
