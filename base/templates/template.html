@@ -58,6 +58,39 @@
             width: 100%;
             position: absolute;
         }
+        /* quick reset */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+        /* relevant styles */
+        
+        .img__wrap {
+            position: relative;
+            height: 30px;
+            width: 30px;
+        }
+        
+        .img__description {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            /* background: rgba(170, 173, 175, 0.72); */
+            color: #fff;
+            visibility: hidden;
+            opacity: 0;
+            /* transition effect. not necessary */
+            transition: opacity .2s, visibility .2s;
+        }
+        
+        .img__wrap:hover .img__description {
+            visibility: visible;
+            opacity: 1;
+        }
     </style>
 
     {% block styles %} {% endblock %}
@@ -111,6 +144,24 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url 'doc'%}" style="color:rgb(231, 228, 228);">Documentation</a>
+                            </li>
+                            <li class="nav-item" style="margin-top:2px;">
+                                <!-- <a href="https://github.com/maripper/quantum_generator/"> -->
+                                <div class="img__wrap">
+                                    <a href="https://github.com/maripper/quantum_generator/" target=”_blank”>
+                                        <img src='{% static "git.png" %}' alt="aa" width="30" height="30">
+                                        <p class="img__description" style="width:30px;height:30px;"><strong>Front</strong></p>
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="nav-item" style="margin-left: 10px;margin-top:2px;">
+                                <!-- <a href="https://github.com/maripper/quantum_generator/"> -->
+                                <div class="img__wrap">
+                                    <a href="https://github.com/maripper/qubit_operators" target=”_blank”>
+                                        <img src='{% static "git.png" %}' alt="aa" width="30" height="30">
+                                        <p class="img__description" style="width:30px;height:30px;"><strong>Back</strong></p>
+                                    </a>
+                                </div>
                             </li>
                             <!-- <li class="nav-item">
                                 <a class="nav-link" href="{% url 'quantum_computer'%}" style="color:rgb(231, 228, 228);">Pricing</a>
