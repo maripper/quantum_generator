@@ -119,17 +119,17 @@
 
 <body>
 
-    <h1>Schema Without Eavesdropper</h1>
+    <h1>Schema Without Interception</h1>
     <div class="img-magnifier-container">
         <img id="myimage" src='{% static "without.jpg" %}'>
     </div>
-    <h1>Schema With Eavesdropper</h1>
+    <h1>Schema With Interception</h1>
     <div class="img-magnifier-container">
         <img id="myimage2" src='{% static "eav.jpg" %}'>
     </div>
     <script>
         /* Initiate Magnify Function
-                                                                                                                                                    with the id of the image, and the strength of the magnifier glass:*/
+                                                                                                                                                            with the id of the image, and the strength of the magnifier glass:*/
         magnify("myimage", 3);
         magnify("myimage2", 3);
     </script>
