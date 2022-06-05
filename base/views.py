@@ -39,7 +39,7 @@ def start(request):
     # response= req.post('https://qubit-operators.herokuapp.com/qubit_operators/safe_poc/',data={'size':n})
 
     # response= req.post('https://qubit-operators.herokuapp.com/qubit_operators/safe_poc/',data={'size':n}).json()['context']
-    response= req.post('http://127.0.0.1:8000/qubit_operators/safe_poc/',data={'size':n}).json()['context']
+    response= req.post('https://qubit-operators.herokuapp.com/qubit_operators/safe_poc/',data={'size':n}).json()['context']
 
     # response = response.replace("'", '"')
 
@@ -66,7 +66,7 @@ def start_eve(request):
     # response= req.post('https://qubit-operators.herokuapp.com/qubit_operators/safe_poc/',data={'size':n})
 
     # response= req.post('https://qubit-operators.herokuapp.com/qubit_operators/safe_poc/',data={'size':n}).json()['context']
-    response= req.post('http://127.0.0.1:8000/qubit_operators/eve_poc/',data={'size':n}).json()['context']
+    response= req.post('https://qubit-operators.herokuapp.com/qubit_operators/eve_poc/',data={'size':n}).json()['context']
 
     # response = response.replace("'", '"')
 
