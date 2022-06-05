@@ -30,6 +30,12 @@ def testing(request):
 
     return render(request,"test.html",{})
 
+@csrf_exempt
+
+def doc(request):
+
+    return render(request,"doc.html",{})
+
 @csrf_exempt  
 
 def start(request):

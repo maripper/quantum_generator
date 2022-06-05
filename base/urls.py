@@ -20,6 +20,7 @@ urlpatterns = [
     path('quantum_computer/', views.quantum_computer,name='quantum_computer'),
     path('start/', views.start,name='start'),
     path('test/', views.test,name='test'),
+    path('doc/', views.doc,name='doc'),
     path('testing/', views.testing,name='testing'),
     path('start_eve/', views.start_eve,name='start_eve')
 ]
