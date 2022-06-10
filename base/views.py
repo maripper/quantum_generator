@@ -19,8 +19,29 @@ import ast
 @csrf_exempt
 
 def breaking_rsa(request):
-    import core.settings as s
+    # import core.settings as s
     return render(request,"breaking_rsa.html")
+
+@csrf_exempt
+
+def shor(request):
+    # import core.settings as s
+    return render(request,"shor.html")
+
+@csrf_exempt
+
+def shor_back(request):
+    
+    input = request.POST['input']
+    print(input)
+    response= req.post('https://qubit-operators.herokuapp.com/qubit_operators/factors/',data={'n':input}).json()
+
+    # response = response.replace("'", '"')
+
+    # response = json.loads(response)
+    print(response)
+
+    return JsonResponse({'factors':response['factors']})
 
 
 @csrf_exempt  
