@@ -18,9 +18,12 @@ from django.urls import path
 import base.views as views
 urlpatterns = [
     path('quantum_computer/', views.quantum_computer,name='quantum_computer'),
+    path('breaking_rsa/', views.breaking_rsa,name='breaking_rsa'),
+    path('rsa/', views.rsa,name='rsa'),
     path('start/', views.start,name='start'),
     path('test/', views.test,name='test'),
     path('doc/', views.doc,name='doc'),
     path('testing/', views.testing,name='testing'),
-    path('start_eve/', views.start_eve,name='start_eve')
+    path('start_eve/', views.start_eve,name='start_eve'),
+
 ]

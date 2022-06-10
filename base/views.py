@@ -18,6 +18,29 @@ import ast
 
 @csrf_exempt
 
+def breaking_rsa(request):
+    import core.settings as s
+    return render(request,"breaking_rsa.html")
+
+
+@csrf_exempt  
+
+def rsa(request):
+
+    input = request.POST['input']
+    print(input)
+    response= req.post('http://127.0.0.1:8001/qubit_operators/coding_decoding/',data={'input':input}).json()
+
+    # response = response.replace("'", '"')
+
+    # response = json.loads(response)
+    print(response)
+
+    return JsonResponse({'priv_key':response['priv_key'],'dec_str':response['dec_str']})
+
+
+@csrf_exempt
+
 def quantum_computer(request):
 
     return render(request,"home.html",{})
