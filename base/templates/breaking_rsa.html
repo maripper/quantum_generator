@@ -67,7 +67,7 @@
     <div class='container'>
 
         <div class='child'>
-            <label for="input">Insert only Numbers:</label>
+            <label for="input" style="font-size: 20px;display: inline-block;white-space: nowrap;">Insert only Numbers:</label>
             <input type="text" id="input" rows="2" cols="5" style="width:235px;border: 2px solid rgb(128, 126, 126);">
 
             </textarea>
@@ -126,35 +126,39 @@
             // console.log($("#comment").text
             var input = $("#input").val();
             $("#content").html("");
+            if ((input + "").match(/^\d+$/)) {
 
-            $.ajax({
+                $.ajax({
 
-                type: "POST",
+                    type: "POST",
 
-                crossDomain: true,
+                    crossDomain: true,
 
-                url: "/simulator/rsa/",
+                    url: "/simulator/rsa/",
 
-                data: {
-                    input: input
-                },
+                    data: {
+                        input: input
+                    },
 
-                success: function(response) {
-
-
-
-                    resp = 'Using RSA and Shor Algorithm the private key is ' + response['priv_key'] + '.\n\n The decrypted word is ' + response['dec_str'] + '!';
-
-                    $('#content').append(resp);
-                    // $('#content').text(resp);
-
-                    alert(resp);
-
-                }
+                    success: function(response) {
 
 
 
-            });
+                        resp = 'Using RSA and Shor Algorithm the private key is ' + response['priv_key'] + '.\n\n The decrypted word is ' + response['dec_str'] + '!';
+
+                        $('#content').append(resp);
+                        // $('#content').text(resp);
+
+                        alert(resp);
+
+                    }
+
+
+
+                });
+            } else {
+                alert('INPUT SHOULD BE INTEGER!');
+            }
 
         }
     </script>
