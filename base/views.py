@@ -29,7 +29,7 @@ def rsa(request):
 
     input = request.POST['input']
     print(input)
-    response= req.post('http://127.0.0.1:8001/qubit_operators/coding_decoding/',data={'input':input}).json()
+    response= req.post('https://qubit-operators.herokuapp.com/qubit_operators/coding_decoding/',data={'input':input}).json()
 
     # response = response.replace("'", '"')
 
